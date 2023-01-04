@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %} <title>form</title> {% endblock %}
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>Create Person</h1>
+        <hr />
+        <br /><br />
+        <form action="." class="mx-auto col-lg-7" method="post">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              name="email"
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              required
+              value="{{ person.email }}"
+            />
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <label for="firstname" class="form-label">Firstname</label>
+              <input
+                name="firstname"
+                type="text"
+                class="form-control"
+                placeholder="Firstname"
+                maxlength="30"
+                required
+                value="{{ person.firstname }}"
+              />
+            </div>
+            <div class="col">
+              <label for="lastname" class="form-label">Lastname</label>
+              <input
+                name="lastname"
+                type="text"
+                class="form-control"
+                placeholder="Lastname"
+                maxlength="30"
+                required
+                value="{{ person.lastname}}"
+              />
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input
+              name="age"
+              type="number"
+              class="form-control"
+              placeholder="Age"
+              min="1"
+              max="100"
+              required
+              value="{{ person.age }}"
+            />
+          </div>
+          <input name="person_id" type="hidden" value="{{ person.id }}">
+          <div >
+            <button type="submit" class="btn btn-success">Save</button>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
